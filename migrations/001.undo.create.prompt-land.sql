@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS prompt_tag, saved_prompts, tags, followers, users, prompts; 
