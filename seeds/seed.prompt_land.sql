@@ -18,7 +18,7 @@ VALUES
   ('tua05859', 
     'Lorem ipsum dolor sit amet.');
 
-INSERT INTO followers (userId, followingId)
+INSERT INTO followers (user_id, following_id)
 VALUES 
     (1, 2),
     (1, 3),
@@ -27,7 +27,7 @@ VALUES
     (4, 2),
     (4, 3);
 
-INSERT INTO tags (tagTitle) 
+INSERT INTO tags (tag_title) 
 VALUES
     ('whatever'),
     ('free_writing'),
@@ -46,7 +46,7 @@ VALUES
     ('songwriting'),
     ('music');
 
-INSERT INTO prompt_tag (promptId, tagId)
+INSERT INTO prompt_tag (prompt_id, tag_id)
 VALUES
     (1, 1),
     (1, 4),
@@ -63,7 +63,7 @@ VALUES
     (5, 3),
     (5, 1);
 
-INSERT INTO saved_prompts (userId, promptId)
+INSERT INTO saved_prompts (user_id, prompt_id)
 VALUES
   (1, 1),
   (1, 4),

@@ -4,11 +4,27 @@ const PromptsService = require('./promptsService')
 const promptsRouter = express.Router()
 const jsonParser = express.json()
 
+const tagsForPrompts = id => {
+  const tagsArray = []
+  promptsRouter
+  .route('/')
+  .get((req, res, next) => {
+  PromptsService.addTags(req.app.get('db'), id)
+    .then(tags => {
+      res(tagsArray.push(tags))
+    }
+    )
+    .catch(next)
+  })
+  return tagsArray
+}
+
 const serializePrompt = prompt => ({
     id: prompt.id,
     username: xss(prompt.username),
     prompt: xss(prompt.prompt),
-    modified: prompt.modified
+    modified: prompt.modified,
+    tags: tagsForPrompts(prompt.id)
   })
 
 promptsRouter

@@ -18,7 +18,10 @@ const PromptsService = {
         return knex('prompts')
           .where({ id })
           .delete()
-      },
+    },
+    addTags(knex, id) {
+        return knex.from('prompt_tag').select('tag_id').where('prompt_id', id)
+    }
 }
 
 module.exports = PromptsService
