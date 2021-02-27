@@ -4,28 +4,12 @@ const PromptsService = require('./promptsService')
 const promptsRouter = express.Router()
 const jsonParser = express.json()
 
-// const tagsForPrompts = id => {
-//   const tagsArray = []
-//   promptsRouter
-//   .route('/')
-//   .get((req, res, next) => {
-//   PromptsService.addTags(req.app.get('db'), id)
-//     .then(tags => {
-//       res(tagsArray.push(tags))
-//     })
-//     .catch(next)
-//   })
-//   return tagsArray
-// }
-
-
 const serializePrompt = prompt => ({
     id: prompt.id,
     username: xss(prompt.username),
     prompt: xss(prompt.prompt),
     modified: prompt.modified,
-    tags: prompt.tag_title
-    // tags: tagsForPrompts(prompt.id)
+    tags: prompt.t
   })
 
 promptsRouter
@@ -34,8 +18,6 @@ promptsRouter
         const knexInstance = req.app.get('db')
         PromptsService.getAllPrompts(knexInstance)
             .then(prompts => {
-              //I need to create a prompt for each specific prompt id
-              //and create an array of tags to push onto tags in the serialized prompt?
               res.json(prompts.map(serializePrompt))
             })
             .catch(next)
