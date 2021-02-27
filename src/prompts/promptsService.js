@@ -1,6 +1,10 @@
 const PromptsService = {
     getAllPrompts(knex){
-        return knex.select('*').from('prompts')
+        return knex
+        .select('*')
+        .from('prompts')
+        .join('prompt_tag', 'prompts.id', 'prompt_tag.prompt_id')
+        .join('tags', 'tags.id', 'prompt_tag.tag_id')
     },
     insertPrompts(knex, newPrompt) {
         return knex
@@ -20,7 +24,11 @@ const PromptsService = {
           .delete()
     },
     addTags(knex, id) {
-        return knex.from('prompt_tag').select('tag_id').where('prompt_id', id)
+        return knex
+        .from('prompt_tag')
+        .select('tag_title')
+        .join('prompt_tag', 'tags.id', 'prompt_tag.tag_id')
+        .where('tags.id', id)
     }
 }
 
