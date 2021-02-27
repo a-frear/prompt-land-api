@@ -9,7 +9,7 @@ const serializePrompt = prompt => ({
     username: xss(prompt.username),
     prompt: xss(prompt.prompt),
     modified: prompt.modified,
-    tags: prompt.t
+    tags: prompt.tags
   })
 
 promptsRouter

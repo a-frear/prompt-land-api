@@ -8,22 +8,22 @@ const serializeTag = tag => ({
     tagTitle: xss(tag.tagtitle)
   })
 
-tagsRouter
-    .route('/')
-    .get((req, res, next) => {
-        const knexInstance = req.app.get('db')
-        TagsService.getAllTags(knexInstance)
-            .then(tags => {
-              res.json(tags.map(serializeTag))
-            })
-            .catch(next)
-            //passing next into the .catch from the promise chain so that any errors get handled by our error handler middleware.
-      })
+// tagsRouter
+//     .route('/')
+//     .get((req, res, next) => {
+//         const knexInstance = req.app.get('db')
+//         TagsService.getAllTags(knexInstance)
+//             .then(tags => {
+//               res.json(tags.map(serializeTag))
+//             })
+//             .catch(next)
+//             //passing next into the .catch from the promise chain so that any errors get handled by our error handler middleware.
+//       })
 
 tagsRouter
       .route('/:tag_id')
       .all((req, res, next) => {
-        TagsService.getById(
+        TagsService.getTagById(
             req.app.get('db'), 
             req.params.tag_id
             )
@@ -39,7 +39,7 @@ tagsRouter
             .catch(next)
       })
       .get((req, res, next) => {
-              res.json(serializeTag(res.prompt))
+              res.json(res.prompt)
             })
 
 module.exports = tagsRouter
