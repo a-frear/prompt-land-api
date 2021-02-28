@@ -1,4 +1,13 @@
 const TagsService = {
+    insertTags(knex, newPromptTag) {
+        return knex
+            .insert(newPromptTag)
+            .into('prompt_tag')
+            .returning('*')
+            .then(rows => {
+                return rows[0]
+            })
+    },
     getTagById(knex, tag){
         return knex('prompts')
         .innerJoin('prompt_tag', 'prompts.id', 'prompt_tag.prompt_id')

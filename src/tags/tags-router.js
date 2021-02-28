@@ -1,24 +1,32 @@
 const express = require('express')
-const xss = require('xss')
 const TagsService = require('./TagsService')
 const tagsRouter = express.Router()
+const jsonParser = express.json()
 
-const serializeTag = tag => ({
-    id: tag.id,
-    tagTitle: xss(tag.tagtitle)
+tagsRouter
+    .route('/')
+    .post(jsonParser, (req, res, next) => {
+      const { tag_id, prompt_id } = req.body
+      const newPromptTag = { tag_id, prompt_id }
+
+      for (const [key, value] of Object.entries(newPromptTag))
+      if (value == null)
+        return res.status(400).json({
+          error: { message: `Missing '${key}' in request body` }
+        })
+      TagsService.insertTags(
+        req.app.get('db'),
+        newPromptTag
+      )
+      .then(
+        res
+          .status(201)
+          .json(res.json)
+      )
+      .catch(next)
   })
 
-// tagsRouter
-//     .route('/')
-//     .get((req, res, next) => {
-//         const knexInstance = req.app.get('db')
-//         TagsService.getAllTags(knexInstance)
-//             .then(tags => {
-//               res.json(tags.map(serializeTag))
-//             })
-//             .catch(next)
-//             //passing next into the .catch from the promise chain so that any errors get handled by our error handler middleware.
-//       })
+
 
 tagsRouter
       .route('/:tag_id')

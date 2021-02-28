@@ -6,6 +6,9 @@ const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
 const promptsRouter = require('./prompts/prompts-router')
 const tagsRouter = require('./tags/tags-router')
+const usersRouter = require('./users/users-router')
+const followersRouter = require('./followers/followers-router')
+const savedPromptsRouter = require('./savedPrompts/saved-prompts-router')
 
 const app = express()
 
@@ -24,6 +27,12 @@ app.get('/', (req,res) => {
 app.use('/api/prompts', promptsRouter)
 
 app.use('/api/tags', tagsRouter)
+
+app.use('/api/users', usersRouter)
+
+app.use('/api/followers', followersRouter)
+
+app.use('/api/saved-prompts', savedPromptsRouter)
 
 app.use((error, req, res, next) => {
     let response

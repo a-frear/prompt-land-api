@@ -18,14 +18,14 @@ VALUES
   ('tua05859', 
     'Lorem ipsum dolor sit amet.');
 
-INSERT INTO followers (user_id, following_id)
+INSERT INTO followers (username, following_user)
 VALUES 
-    (1, 2),
-    (1, 3),
-    (2, 1),
-    (1, 4),
-    (4, 2),
-    (4, 3);
+    ('amy.frear', 'h.filbourn'),
+    ('amy.frear', 'eyesiteclub'),
+    ('h.filbourn', 'eyesiteclub'),
+    ('h.filbourn', 'tua05859'),
+    ('tua05859', 'amy.frear'),
+    ('tua05859', 'eyesiteclub');
 
 INSERT INTO tags (tag_title) 
 VALUES
@@ -63,9 +63,9 @@ VALUES
     (5, 3),
     (5, 1);
 
-INSERT INTO saved_prompts (user_id, prompt_id)
+INSERT INTO saved_prompts (username, prompt_id)
 VALUES
-  (1, 1),
-  (1, 4),
-  (2, 1),
-  (3, 5);
+  ('amy.frear', 1),
+  ('amy.frear', 4),
+  ('h.filbourn', 1),
+  ('eyesiteclub', 5);
