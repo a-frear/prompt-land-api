@@ -1,6 +1,6 @@
 const express = require("express");
-const TagsService = require("./tagsService");
 const tagsRouter = express.Router();
+const TagsService = require("./tagsService");
 const jsonParser = express.json();
 
 tagsRouter.route("/").post(jsonParser, (req, res, next) => {
