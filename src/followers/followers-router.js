@@ -3,7 +3,17 @@ const followersService = require("./followersService");
 const followersRouter = express.Router();
 const jsonParser = express.json();
 
-followersRouter.route("/").post(jsonParser, (req, res, next) => {
+followersRouter
+.route("/")
+.get((req, res, next) => {
+  const knexInstance = req.app.get("db");
+  followersService.getAllFollowers(knexInstance)
+    .then((followers) => {
+      res.json(followers.map(serializePrompt));
+    })
+    .catch(next);
+})
+.post(jsonParser, (req, res, next) => {
   const { username, following_user } = req.body;
   const newFollowing = { username, following_user };
 

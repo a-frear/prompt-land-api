@@ -1,4 +1,7 @@
 const followersService = {
+  getAllFollowers(knex) {
+    return knex.select("*").from("followers");
+  },
   insertFollowing(knex, newFollowing) {
     return knex
       .insert(newFollowing)
