@@ -7,8 +7,8 @@ savedPromptsRouter
   .route("/")
 
   .post(jsonParser, (req, res, next) => {
-    const { username, prompt_id } = req.body;
-    const newSaved = { username, prompt_id };
+    const { user, prompt_id } = req.body;
+    const newSaved = { user, prompt_id };
 
     for (const [key, value] of Object.entries(newSaved))
       if (value == null)
@@ -27,9 +27,9 @@ savedPromptsRouter
   });
 
 savedPromptsRouter
-  .route("/:username")
+  .route("/:user")
   .all((req, res, next) => {
-    SavedPromptsService.getByUsername(req.app.get("db"), req.params.username)
+    SavedPromptsService.getByUser(req.app.get("db"), req.params.user)
       .then((prompt) => {
         if (!prompt) {
           return res.status(404).json({

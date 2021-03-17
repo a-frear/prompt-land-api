@@ -54,7 +54,7 @@ describe("users Endpoints", function () {
     it(`creates a new user`, () => {
       this.retries(3);
       const newUser = {
-        username: "test_user_123",
+        user: "test_user_123",
       };
       return supertest(app)
         .post(`/api/users`)
@@ -62,7 +62,7 @@ describe("users Endpoints", function () {
         .send(newUser)
         .expect(201)
         .expect((res) => {
-          expect(res.body.username).to.eql(newUser.username);
+          expect(res.body.user).to.eql(newUser.user);
           expect(res.body).to.have.property("id");
           expect(res.headers.location).to.eql(`/api/users/${res.body.id}`);
         });

@@ -15,8 +15,8 @@ usersRouter
       .catch(next);
   })
   .post(jsonParser, (req, res, next) => {
-    const { username } = req.body;
-    const newUser = { username };
+    const { user } = req.body;
+    const newUser = { user };
 
     for (const [key, value] of Object.entries(newUser))
       if (value == null)

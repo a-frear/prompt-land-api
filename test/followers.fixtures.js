@@ -2,17 +2,17 @@ function makeFollowersArray() {
   return [
     {
       id: 1,
-      username: "harryp",
+      user: "harryp",
       following_user: "a_dumbledore",
     },
     {
       id: 2,
-      username: "hermione.granger",
+      user: "hermione.granger",
       following_user: "r.weasley",
     },
     {
       id: 3,
-      username: "r.weasley",
+      user: "r.weasley",
       following_user: "hermione.granger",
     },
   ];

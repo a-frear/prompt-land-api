@@ -1,11 +1,11 @@
-INSERT INTO users (username) 
+INSERT INTO users (user) 
 VALUES 
     ('amy.frear'),
     ('h.filbourn'),
     ('eyesiteclub'),
     ('tua05859');
 
-INSERT INTO prompts (username, prompt) 
+INSERT INTO prompts (user, prompt) 
 VALUES 
  ('amy.frear',
     'someone is eating a tangerine'),
@@ -18,7 +18,7 @@ VALUES
   ('tua05859', 
     'Lorem ipsum dolor sit amet.');
 
-INSERT INTO followers (username, following_user)
+INSERT INTO followers (user, following_user)
 VALUES 
     ('amy.frear', 'h.filbourn'),
     ('amy.frear', 'eyesiteclub'),
@@ -63,7 +63,7 @@ VALUES
     (5, 3),
     (5, 1);
 
-INSERT INTO saved_prompts (username, prompt_id)
+INSERT INTO saved_prompts (user, prompt_id)
 VALUES
   ('amy.frear', 1),
   ('amy.frear', 4),

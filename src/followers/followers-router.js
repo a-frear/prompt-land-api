@@ -4,8 +4,8 @@ const followersRouter = express.Router();
 const jsonParser = express.json();
 
 followersRouter.route("/").post(jsonParser, (req, res, next) => {
-  const { username, following_user } = req.body;
-  const newFollowing = { username, following_user };
+  const { user, following_user } = req.body;
+  const newFollowing = { user, following_user };
 
   for (const [key, value] of Object.entries(newFollowing))
     if (value == null)
@@ -25,7 +25,7 @@ followersRouter
   .route("/:id")
   .all((req, res, next) => {
     followersService
-      .getByUsername(req.app.get("db"), req.params.id)
+      .getByUser(req.app.get("db"), req.params.id)
       .then((user) => {
         if (!user) {
           return res.status(404).json({
