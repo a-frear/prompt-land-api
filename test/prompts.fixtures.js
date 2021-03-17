@@ -5,35 +5,35 @@ function makePromptsArray() {
       modified: "2021-01-16T15:41:12.239Z",
       prompt:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non.Adipisci, pariatur.Molestiae, libero esse hic adipisci autem neque ?",
-      user: "harry_potter",
+      username: "harry_potter",
     },
     {
       id: 2,
       modified: "2021-01-16T15:41:12.239Z",
       prompt:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non.Adipisci, pariatur.Molestiae, libero esse hic adipisci autem neque ?",
-      user: "ron_weasley",
+      username: "ron_weasley",
     },
     {
       id: 3,
       modified: "2021-01-16T15:41:12.239Z",
       prompt:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non.Adipisci, pariatur.Molestiae, libero esse hic adipisci autem neque ?",
-      user: "adumbledore",
+      username: "adumbledore",
     },
     {
       id: 4,
       modified: "2021-01-16T15:41:12.239Z",
       prompt:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non.Adipisci, pariatur.Molestiae, libero esse hic adipisci autem neque ?",
-      user: "harry_potter",
+      username: "harry_potter",
     },
     {
       id: 5,
       modified: "2021-01-16T15:41:12.239Z",
       prompt:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non.Adipisci, pariatur.Molestiae, libero esse hic adipisci autem neque ?",
-      user: "hermione_g",
+      username: "hermione_g",
     },
   ];
 }
@@ -43,7 +43,7 @@ function makeMaliciousPrompt() {
     id: 911,
     modified: new Date().toISOString(),
     prompt: `Bad image <img src="https://url.to.file.which/does-not.exist" onerror="alert(document.cookie);">. But not <strong>all</strong> bad.`,
-    user: "tom_riddle",
+    username: "tom_riddle",
   };
   const expectedPrompt = {
     ...maliciousPrompt,

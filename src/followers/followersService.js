@@ -11,7 +11,7 @@ const followersService = {
   deleteFollowing(knex, id) {
     return knex("followers").where("id", id).delete();
   },
-  getByUser(knex, id) {
+  getByUsername(knex, id) {
     return knex.from("followers").select("*").where("id", id).first();
   },
 };

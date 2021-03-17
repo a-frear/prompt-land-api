@@ -6,7 +6,7 @@ const jsonParser = express.json();
 
 const serializePrompt = (prompt) => ({
   id: prompt.id,
-  user: xss(prompt.user),
+  username: xss(prompt.username),
   prompt: xss(prompt.prompt),
   modified: prompt.modified,
   tags: prompt.tags,
@@ -23,8 +23,8 @@ promptsRouter
       .catch(next);
   })
   .post(jsonParser, (req, res, next) => {
-    const { user, prompt } = req.body;
-    const newPrompt = { user, prompt };
+    const { username, prompt } = req.body;
+    const newPrompt = { username, prompt };
 
     for (const [key, value] of Object.entries(newPrompt))
       if (value == null)

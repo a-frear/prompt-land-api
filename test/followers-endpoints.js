@@ -29,7 +29,7 @@ describe("Followers Endpoints", function () {
     it(`creates a new follower row`, () => {
       this.retries(3);
       const newFollower = {
-        user: "test_user_123",
+        username: "test_user_123",
         following_user: "new_friend_321",
       };
       return supertest(app)
@@ -39,7 +39,7 @@ describe("Followers Endpoints", function () {
         .expect(201)
         .expect((res) => {
           expect(res.body.following_user).to.eql(newFollower.following_user);
-          expect(res.body.user).to.eql(newFollower.user);
+          expect(res.body.username).to.eql(newFollower.username);
           expect(res.body).to.have.property("id");
         });
     });

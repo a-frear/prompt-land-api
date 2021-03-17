@@ -87,7 +87,7 @@ describe("Saved Prompts Endpoints", function () {
 
     it("creates a saved prompt and responds with 201 and the new saved prompt", () => {
       const newSavedPrompt = {
-        user: "r.weasley",
+        username: "r.weasley",
         prompt_id: 1,
       };
       return supertest(app)
@@ -96,7 +96,7 @@ describe("Saved Prompts Endpoints", function () {
         .send(newSavedPrompt)
         .expect(201)
         .expect((res) => {
-          expect(res.body.user).to.eql(newSavedPrompt.user);
+          expect(res.body.username).to.eql(newSavedPrompt.username);
           expect(res.body.prompt_id).to.eql(newSavedPrompt.prompt_id);
           expect(res.body).to.have.property("id");
         });

@@ -2,15 +2,15 @@ function makeUsersArray() {
   return [
     {
       id: 1,
-      user: "harryp",
+      username: "harryp",
     },
     {
       id: 2,
-      user: "hermione.granger",
+      username: "hermione.granger",
     },
     {
       id: 3,
-      user: "r.weasley",
+      username: "r.weasley",
     },
   ];
 }

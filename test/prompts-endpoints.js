@@ -89,7 +89,7 @@ describe("Prompts Endpoints", function () {
       this.retries(3);
       const newPrompt = {
         prompt: "Test new prompt",
-        user: "test_user_123",
+        username: "test_user_123",
       };
       return supertest(app)
         .post(`/api/prompts`)
@@ -98,7 +98,7 @@ describe("Prompts Endpoints", function () {
         .expect(201)
         .expect((res) => {
           expect(res.body.prompt).to.eql(newPrompt.prompt);
-          expect(res.body.user).to.eql(newPrompt.user);
+          expect(res.body.username).to.eql(newPrompt.username);
           expect(res.body).to.have.property("id");
           expect(res.headers.location).to.eql(`/api/prompts/${res.body.id}`);
           const expected = new Date().toLocaleString();

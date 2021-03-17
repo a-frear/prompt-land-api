@@ -2,17 +2,17 @@ function makeSavedPromptsArray() {
   return [
     {
       id: 1,
-      user: "harryp",
+      username: "harryp",
       prompt_id: 1,
     },
     {
       id: 2,
-      user: "r.weasley",
+      username: "r.weasley",
       prompt_id: 2,
     },
     {
       id: 3,
-      user: "hermione.granger",
+      username: "hermione.granger",
       prompt_id: 3,
     },
   ];

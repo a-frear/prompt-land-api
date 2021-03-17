@@ -27,7 +27,7 @@ const PromptsService = {
       .innerJoin("tags", "tags.id", "prompt_tag.tag_id")
       .select([
         "prompts.id",
-        "prompts.user",
+        "prompts.username",
         "prompts.modified",
         "prompts.prompt",
         knex.raw("ARRAY_AGG(tags.tag_title) as tags"),

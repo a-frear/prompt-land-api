@@ -1,12 +1,12 @@
 const UsersService = {
   getAllUsers(knex) {
     return knex("users")
-      .innerJoin("followers", "users.user", "followers.user")
+      .innerJoin("followers", "users.username", "followers.username")
       .select([
-        "users.user",
+        "users.username",
         knex.raw("ARRAY_AGG(followers.following_user) as following"),
       ])
-      .groupBy("users.user");
+      .groupBy("users.username");
   },
   insertUsers(knex, newUser) {
     return knex
