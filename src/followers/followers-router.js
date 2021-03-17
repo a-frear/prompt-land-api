@@ -9,7 +9,7 @@ followersRouter
   const knexInstance = req.app.get("db");
   followersService.getAllFollowers(knexInstance)
     .then((followers) => {
-      res.json(followers.map(serializePrompt));
+      res.json(followers);
     })
     .catch(next);
 })
