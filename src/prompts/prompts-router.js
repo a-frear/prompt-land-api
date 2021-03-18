@@ -3,6 +3,7 @@ const xss = require("xss");
 const PromptsService = require("./promptsService");
 const promptsRouter = express.Router();
 const jsonParser = express.json();
+const TagsService = require("../tags/tagsService")
 
 const serializePrompt = (prompt) => ({
   id: prompt.id,
@@ -25,7 +26,6 @@ promptsRouter
   .post(jsonParser, (req, res, next) => {
     const { username, prompt } = req.body;
     const newPrompt = { username, prompt };
-
     for (const [key, value] of Object.entries(newPrompt))
       if (value == null)
         return res.status(400).json({
@@ -34,10 +34,17 @@ promptsRouter
 
     PromptsService.insertPrompts(req.app.get("db"), newPrompt)
       .then((prompt) => {
+        console.log(prompt)
+        const { tag_id } = req.body
+        const newPromptTag = {prompt_id: prompt.id, tag_id}
+        TagsService.insertTags(req.app.get("db"), newPromptTag)
+        .then((promptTag) => {
+        console.log(promptTag)
         res
           .status(201)
           .location(`/api/prompts/${prompt.id}`)
           .json(serializePrompt(prompt));
+      })
       })
       .catch(next);
   });
