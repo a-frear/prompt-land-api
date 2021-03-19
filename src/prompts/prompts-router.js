@@ -37,12 +37,8 @@ promptsRouter
         console.log(prompt)
         console.log(tag_id)
         //but what if there are multiple tag id's
-        // const newPromptTag = []
-        // console.log(tag_id)
-        // tag_id.map((t) => {
-        //   newPromptTag.push({prompt_id: prompt.id, t})
-        // })
         // const newPromptTag = [{prompt_id: prompt.id, tag_id}]
+        //HERE IS MY EXPERIMENT: not working
         tag_id.map((t) => { 
           TagsService.insertTags(req.app.get("db"), {prompt_id: prompt.id, t})
         })
