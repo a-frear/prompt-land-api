@@ -24,7 +24,7 @@ promptsRouter
       .catch(next);
   })
   .post(jsonParser, (req, res, next) => {
-    const { username, prompt } = req.body;
+    const { username, prompt, tag_id } = req.body;
     const newPrompt = { username, prompt };
     for (const [key, value] of Object.entries(newPrompt))
       if (value == null)
@@ -35,16 +35,16 @@ promptsRouter
     PromptsService.insertPrompts(req.app.get("db"), newPrompt)
       .then((prompt) => {
         console.log(prompt)
-        const { tag_id } = req.body
-        const newPromptTag = {prompt_id: prompt.id, tag_id}
-        TagsService.insertTags(req.app.get("db"), newPromptTag)
+        //but what if there are multiple tag id's
+        const newPromptTag = [{prompt_id: prompt.id, tag_id}]
+        newPromptTag.map((pt)=> { TagsService.insertTags(req.app.get("db"), newPromptTag)
         .then((promptTag) => {
         console.log(promptTag)
         res
           .status(201)
           .location(`/api/prompts/${prompt.id}`)
           .json(serializePrompt(prompt));
-      })
+      })})
       })
       .catch(next);
   });
