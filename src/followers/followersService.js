@@ -18,7 +18,7 @@ const followersService = {
     return knex.from("followers").select("*").where("id", id).first();
   },
   getAllByUsername(knex, id) {
-    return knex.from("followers").select("following_user").where("username", id)
+    return knex.from("followers").select("following_user", "id").where("username", id)
   }
 };
 
