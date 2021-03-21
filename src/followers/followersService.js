@@ -1,6 +1,6 @@
 const followersService = {
-  getAllFollowers(knex, user) {
-    return knex.select("*").from("followers").where("username", user);
+  getAllFollowers(knex) {
+    return knex.select("*").from("followers")
   },
   insertFollowing(knex, newFollowing) {
     return knex
@@ -17,6 +17,9 @@ const followersService = {
   getByUsername(knex, id) {
     return knex.from("followers").select("*").where("id", id).first();
   },
+  getByAllUsernames(knex, id) {
+    return knex.from("followers").select("*").where("username", id)
+  }
 };
 
 module.exports = followersService;
