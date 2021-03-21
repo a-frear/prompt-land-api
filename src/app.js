@@ -3,12 +3,13 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const helmet = require("helmet");
-const { NODE_ENV } = require("./config");
+const { NODE_ENV, CLIENT_ORIGIN } = require("./config");
 const promptsRouter = require("./prompts/prompts-router");
 const tagsRouter = require("./tags/tags-router");
 const usersRouter = require("./users/users-router");
 const followersRouter = require("./followers/followers-router");
 const savedPromptsRouter = require("./savedPrompts/saved-prompts-router");
+const clientOrign = require
 
 const app = express();
 
@@ -18,7 +19,7 @@ app.use(morgan(morganOption));
 app.use(helmet());
 app.use(
   cors({
-      origin: 'https://prompt-land.com'
+      origin: CLIENT_ORIGIN
   })
 );
 
