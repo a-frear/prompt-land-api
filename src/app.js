@@ -9,7 +9,6 @@ const tagsRouter = require("./tags/tags-router");
 const usersRouter = require("./users/users-router");
 const followersRouter = require("./followers/followers-router");
 const savedPromptsRouter = require("./savedPrompts/saved-prompts-router");
-const clientOrign = require
 
 const app = express();
 
