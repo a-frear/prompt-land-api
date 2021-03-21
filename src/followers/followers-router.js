@@ -35,7 +35,7 @@ followersRouter
   .route("/all/:id")
   .get((req, res, next) => {
     followersService
-      .getByAllUsernames(req.app.get("db"), req.params.id)
+      .getAllByUsername(req.app.get("db"), req.params.id)
       .then((users) => {
         res.json(users)
       })
