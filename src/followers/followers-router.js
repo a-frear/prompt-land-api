@@ -6,8 +6,10 @@ const jsonParser = express.json();
 followersRouter
 .route("/")
 .get((req, res, next) => {
+  const { username } = req.body;
+  const user = { username };
   const knexInstance = req.app.get("db");
-  followersService.getAllFollowers(knexInstance)
+  followersService.getAllFollowers(knexInstance, user)
     .then((followers) => {
       res.json(followers);
     })
