@@ -37,8 +37,7 @@ followersRouter
     followersService
       .getByAllUsernames(req.app.get("db"), req.params.id)
       .then((users) => {
-        res.json = users;
-        next();
+        res.json(users)
       })
       .catch(next);
   })
