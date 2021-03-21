@@ -18,7 +18,7 @@ app.use(morgan(morganOption));
 app.use(helmet());
 app.use(
   cors({
-      origin: 'https://prompt-land-a-frear.vercel.app/'
+      origin: 'https://prompt-land-a-frear.vercel.app'
   })
 );
 
