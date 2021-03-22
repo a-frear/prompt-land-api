@@ -38,15 +38,17 @@ promptsRouter
             .status(201)
             .location(`/api/prompts/${prompt.id}`)
             .json(serializePrompt(prompt));
+            tag_id.map((t) => { 
+              TagsService.insertTags(req.app.get("db"), {prompt_id: prompt.id, t})
+            })
       })
-      .then((prompt) => {
-        //but what if there are multiple tag id's
-        // const newPromptTag = [{prompt_id: prompt.id, tag_id}]
-        //HERE IS MY EXPERIMENT: not working
-        tag_id.map((t) => { 
-          TagsService.insertTags(req.app.get("db"), {prompt_id: prompt.id, t})
-        })
-      })
+      // .then((prompt) => {
+      //   console.log(prompt)
+      //   //but what if there are multiple tag id's
+      //   // const newPromptTag = [{prompt_id: prompt.id, tag_id}]
+      //   //HERE IS MY EXPERIMENT: not working
+
+      // })
       .catch(next);
   });
 
