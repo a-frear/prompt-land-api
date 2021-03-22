@@ -26,6 +26,7 @@ promptsRouter
   .post(jsonParser, (req, res, next) => {
     const { username, prompt, tag_id=[] } = req.body;
     const newPrompt = { username, prompt };
+    console.log(newPrompt)
     for (const [key, value] of Object.entries(newPrompt))
       if (value == null)
         return res.status(400).json({
@@ -38,7 +39,10 @@ promptsRouter
           const promptId = prompt.id
           for (let i = 0; i < tag_id.length; i++) {
             let tagId = tag_id[i]
-            TagsService.insertTags(req.app.get("db"), {promptId, tagId})
+            let newPromptTag = {prompt_id: promptId, tag_id: tagId}
+            console.log(newPromptTag)
+            TagsService.insertTags(req.app.get("db"), newPromptTag)
+            .then(next)
           }
           res
             .status(201)
