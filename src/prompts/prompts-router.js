@@ -38,7 +38,7 @@ promptsRouter
             .status(201)
             .location(`/api/prompts/${prompt.id}`)
             .json(serializePrompt(prompt));
-            for (let i = 0; i<tag_id.length; i++) {
+            for (let i = 0; i < tag_id.length; i++) {
                 let tagId = tag_id[i]
                 TagsService.insertTags(req.app.get("db"), {prompt_id: prompt.id, tagId})
             .then((tag) => {
