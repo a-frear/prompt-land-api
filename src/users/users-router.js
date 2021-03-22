@@ -49,15 +49,5 @@ usersRouter
   .get((req, res, next) => {
     res.json(res.user);
   });
-// .delete((req, res, next) => {
-//   UsersService.deleteuser(
-//     req.app.get('db'),
-//     req.params.user_id
-//   )
-//     .then(numRowsAffected => {
-//       res.status(204).end()
-//     })
-//     .catch(next)
-// })
 
 module.exports = usersRouter;

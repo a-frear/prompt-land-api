@@ -35,12 +35,10 @@ promptsRouter
 
     PromptsService.insertPrompts(req.app.get("db"), newPrompt)
           .then((prompt) => {
-            console.log('hi')
           const promptId = prompt.id
           for (let i = 0; i < tag_id.length; i++) {
             let tagId = tag_id[i]
             let newPromptTag = {prompt_id: promptId, tag_id: tagId}
-            console.log(newPromptTag)
             TagsService.insertTags(req.app.get("db"), newPromptTag)
             .then(next)
           }
@@ -49,13 +47,6 @@ promptsRouter
             .location(`/api/prompts/${promptId}`)
             .json(serializePrompt(prompt))
           })
-      // .then((prompt) => {
-      //   console.log(prompt)
-      //   //but what if there are multiple tag id's
-      //   // const newPromptTag = [{prompt_id: prompt.id, tag_id}]
-      //   //HERE IS MY EXPERIMENT: not working
-
-      // })
       .catch(next);
   });
 

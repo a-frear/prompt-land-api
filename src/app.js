@@ -8,7 +8,6 @@ const promptsRouter = require("./prompts/prompts-router");
 const tagsRouter = require("./tags/tags-router");
 const usersRouter = require("./users/users-router");
 const followersRouter = require("./followers/followers-router");
-const savedPromptsRouter = require("./savedPrompts/saved-prompts-router");
 
 const app = express();
 
@@ -33,8 +32,6 @@ app.use("/api/tags", tagsRouter);
 app.use("/api/users", usersRouter);
 
 app.use("/api/followers", followersRouter);
-
-app.use("/api/saved-prompts", savedPromptsRouter);
 
 app.use((error, req, res, next) => {
   let response;
