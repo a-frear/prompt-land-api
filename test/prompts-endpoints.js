@@ -90,7 +90,7 @@ describe("Prompts Endpoints", function () {
       const newPrompt = {
         prompt: "Test new prompt",
         username: "test_user_123",
-        tag_id: [1, 2, 3] 
+        tag_id: [1, 2, 3],
       };
       return supertest(app)
         .post(`/api/prompts`)

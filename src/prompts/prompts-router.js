@@ -3,7 +3,7 @@ const xss = require("xss");
 const PromptsService = require("./promptsService");
 const promptsRouter = express.Router();
 const jsonParser = express.json();
-const TagsService = require("../tags/tagsService")
+const TagsService = require("../tags/tagsService");
 
 const serializePrompt = (prompt) => ({
   id: prompt.id,
@@ -24,9 +24,9 @@ promptsRouter
       .catch(next);
   })
   .post(jsonParser, (req, res, next) => {
-    const { username, prompt, tag_id=[] } = req.body;
+    const { username, prompt, tag_id = [] } = req.body;
     const newPrompt = { username, prompt };
-    console.log(newPrompt)
+    console.log(newPrompt);
     for (const [key, value] of Object.entries(newPrompt))
       if (value == null)
         return res.status(400).json({
@@ -34,19 +34,18 @@ promptsRouter
         });
 
     PromptsService.insertPrompts(req.app.get("db"), newPrompt)
-          .then((prompt) => {
-          const promptId = prompt.id
-          for (let i = 0; i < tag_id.length; i++) {
-            let tagId = tag_id[i]
-            let newPromptTag = {prompt_id: promptId, tag_id: tagId}
-            TagsService.insertTags(req.app.get("db"), newPromptTag)
-            .then(next)
-          }
-          res
-            .status(201)
-            .location(`/api/prompts/${promptId}`)
-            .json(serializePrompt(prompt))
-          })
+      .then((prompt) => {
+        const promptId = prompt.id;
+        for (let i = 0; i < tag_id.length; i++) {
+          let tagId = tag_id[i];
+          let newPromptTag = { prompt_id: promptId, tag_id: tagId };
+          TagsService.insertTags(req.app.get("db"), newPromptTag).then(next);
+        }
+        res
+          .status(201)
+          .location(`/api/prompts/${promptId}`)
+          .json(serializePrompt(prompt));
+      })
       .catch(next);
   });
 

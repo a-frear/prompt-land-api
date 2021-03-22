@@ -5,7 +5,7 @@ function makePromptsArray() {
       modified: "2021-01-16T15:41:12.239Z",
       prompt:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non.Adipisci, pariatur.Molestiae, libero esse hic adipisci autem neque ?",
-      username: "harry_potter"
+      username: "harry_potter",
     },
     {
       id: 2,
