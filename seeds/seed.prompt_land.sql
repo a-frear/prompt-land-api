@@ -36,7 +36,7 @@ VALUES
     ('comedy_writing'),
     ('screenwriting'),
     ('poetry'),
-    ('playwrighting'),
+    ('playwriting'),
     ('performance'),
     ('painting'),
     ('sculpture'),
