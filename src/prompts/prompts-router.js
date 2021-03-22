@@ -34,16 +34,17 @@ promptsRouter
 
     PromptsService.insertPrompts(req.app.get("db"), newPrompt)
           .then((prompt) => {
+          const promptId = prompt.id
           res
             .status(201)
-            .location(`/api/prompts/${prompt.id}`)
+            .location(`/api/prompts/${promptId}`)
             .json(serializePrompt(prompt));
             for (let i = 0; i < tag_id.length; i++) {
                 let tagId = tag_id[i]
-                TagsService.insertTags(req.app.get("db"), {prompt_id: prompt.id, tagId})
-            .then((tag) => {
-              res.status(201).location(`/api/tags/${tag.id}`).json(res.json);
-            })
+                TagsService.insertTags(req.app.get("db"), {promptId, tagId})
+            .then(
+              res.status(204)
+            )
             }
             })
       // .then((prompt) => {
