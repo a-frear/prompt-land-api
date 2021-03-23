@@ -32,7 +32,7 @@ followersRouter
       .catch(next);
   });
 
-followersRouter.route("/all/:id").get((req, res, next) => {
+followersRouter.route("/follower/:id").get((req, res, next) => {
   followersService
     .getAllByUsername(req.app.get("db"), req.params.id)
     .then((users) => {
