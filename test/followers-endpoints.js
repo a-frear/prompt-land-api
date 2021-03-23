@@ -30,7 +30,7 @@ describe("Followers Endpoints", function () {
       this.retries(3);
       const newFollower = {
         username: "test_user_123",
-        following_user: "new_friend_321",
+        followee: "new_friend_321",
       };
       return supertest(app)
         .post(`/api/followers`)
@@ -38,7 +38,7 @@ describe("Followers Endpoints", function () {
         .send(newFollower)
         .expect(201)
         .expect((res) => {
-          expect(res.body.following_user).to.eql(newFollower.following_user);
+          expect(res.body.followee).to.eql(newFollower.followee);
           expect(res.body.username).to.eql(newFollower.username);
           expect(res.body).to.have.property("id");
         });

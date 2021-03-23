@@ -15,8 +15,8 @@ followersRouter
       .catch(next);
   })
   .post(jsonParser, (req, res, next) => {
-    const { username, following_user } = req.body;
-    const newFollowing = { username, following_user };
+    const { username, followee } = req.body;
+    const newFollowing = { username, followee };
 
     for (const [key, value] of Object.entries(newFollowing))
       if (value == null)

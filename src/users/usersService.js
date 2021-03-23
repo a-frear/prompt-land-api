@@ -4,7 +4,7 @@ const UsersService = {
       .innerJoin("followers", "users.username", "followers.username")
       .select([
         "users.username",
-        knex.raw("ARRAY_AGG(followers.following_user) as following"),
+        knex.raw("ARRAY_AGG(followers.followee) as following"),
       ])
       .groupBy("users.username");
   },

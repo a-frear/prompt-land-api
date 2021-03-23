@@ -18,7 +18,7 @@ VALUES
   ('tua05859', 
     'Lorem ipsum dolor sit amet.');
 
-INSERT INTO followers (username, following_user)
+INSERT INTO followers (username, followee)
 VALUES 
     ('amy.frear', 'h.filbourn'),
     ('amy.frear', 'eyesiteclub'),
