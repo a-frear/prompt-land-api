@@ -6,7 +6,6 @@ const helmet = require("helmet");
 const { NODE_ENV, CLIENT_ORIGIN } = require("./config");
 const promptsRouter = require("./prompts/prompts-router");
 const tagsRouter = require("./tags/tags-router");
-const usersRouter = require("./users/users-router");
 const followersRouter = require("./followers/followers-router");
 
 const app = express();
@@ -28,8 +27,6 @@ app.get("/", (req, res) => {
 app.use("/api/prompts", promptsRouter);
 
 app.use("/api/tags", tagsRouter);
-
-app.use("/api/users", usersRouter);
 
 app.use("/api/followers", followersRouter);
 
